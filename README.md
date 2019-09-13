@@ -4,10 +4,9 @@
 - cuDNN >= 7.0
 
 ### Installation:
+- git clone this repo
 - Run `make`
-- Download weights file:
-    * [weights_file] (https://drive.google.com/open?id=1fcW2C9mqby9rmq2MsvdAtec8e32D41mZ)
-    * put weights into darknet folder
+- Weights already included in repo
 - Generate a txt file of image paths:
     * open image_list.py
     * change the variables to where your data is located
@@ -19,7 +18,6 @@
     * detection results stored in `result.json` (there's a sample `result.json` included)
 
 ### JSON Sample
-
 ```
 [
 {
