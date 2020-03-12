@@ -1,0 +1,7 @@
+classes= 6
+train  = /home/sf/darknet/data/coco/train65742.txt
+valid  = /home/sf/darknet/data/coco/val7308.txt
+names = cfg/coco6.names
+backup = /home/sf/darknet/backup
+eval=coco
+
