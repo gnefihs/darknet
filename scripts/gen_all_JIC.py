@@ -21,6 +21,8 @@ __status__ = "Production"
 
 if __name__ == '__main__':
     parent_dir = "/media/yl/demo_ssd/raw_data/"
+    darknet_dir = "/media/yl/downloads/wen/darknet"
+    os.chdir(darknet_dir)
 
     # get the sets with the image_detections dir 
     det_dirs = glob.glob(parent_dir+'/*/*/log_high/*/image_detections')
@@ -28,8 +30,10 @@ if __name__ == '__main__':
         img_txts = glob.glob(det_dir+'/*.txt')
         for img_txt in img_txts:
             cam = os.path.basename(img_txt)[11:13] #FIXME: Must be of the name image_list_xx.txt
-            print(img_txt)
-            json_name = "results_"+cam+"_yolov3-tiny-prn-slim_best.weights.json"
-            print(json_name)
-            subprocess.call("../darknet detector test ../cfg/coco6.data ../cfg/yolov3-tiny-prn-slim.cfg ../yolov3-tiny-prn-slim_best.weights -ext_output -dont_show -out %s < %s.txt" % (json_name, img_txt))
+            print("reading txt: ",img_txt)
+            json_name = os.path.join(det_dir,"results_"+cam+"_yolov3-tiny-prn-slim_best.weights.json")
+            #print(json_name)
+            #pdb.set_trace()
+            subprocess.call("./darknet detector test ./cfg/coco6.data ./cfg/yolov3-tiny-prn-slim.cfg ./yolov3-tiny-prn-slim_best.weights -ext_output -dont_show -out "+json_name+" < "+img_txt, shell=True)
+            #subprocess.call(["./darknet","detector","test","./cfg/coco6.data","./cfg/yolov3-tiny-prn-slim.cfg","./yolov3-tiny-prn-slim_best.weights","-ext_output","-dont_show","-out",json_name+" < "+img_txt], shell=True)
             #print(img_txt) # DEBUG
