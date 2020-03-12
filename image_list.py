@@ -5,6 +5,7 @@ OUTPUT_FILENAME = "image_list.txt"
 OUTPUT_DIR = os.getcwd() + "/" # default: current directory
 
 img_list = os.listdir(IMG_DATA_DIR)
+img_list = sorted(img_list)
 
 num_added = 0
 with open(OUTPUT_DIR + OUTPUT_FILENAME,'w') as file:
